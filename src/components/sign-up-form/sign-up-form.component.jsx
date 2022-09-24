@@ -1,6 +1,11 @@
 import { useState } from "react";
 
+import FormInput from "../form-input/form-input.component";
+
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
+
+import './sign-up-form.styles.scss';
+import Button from "../button/button.component";
 
 const defaultFormFields = {
     displayName: '',
@@ -41,42 +46,43 @@ const SignUpForm = () => {
     }
 
     return(
-        <div>
-            <h1>Sign Up with your email and password</h1>
+        <div className="sign-up-container">
+            <h2>Don't have an account?</h2>
+            <span>Sign Up with your email and password</span>
             <form onSubmit={handleSubmit}>
-                <label>Display Name</label>
-                <input 
+                <FormInput 
+                    label='Display Name'
                     type='text' 
                     required 
                     name="displayName" 
                     value={ displayName }
                 />
 
-                <label>Email</label>
-                <input 
+                <FormInput
+                    label='Email' 
                     type='email' 
                     required 
                     name="email" 
                     value={ email }
                 />
 
-                <label>Password</label>
-                <input 
+                <FormInput
+                    label='Password' 
                     type='password' 
                     required 
                     name="password" 
                     value={ password }
                 />
 
-                <label>Confirm Password</label>
-                <input 
+                <FormInput
+                    label='Confirm Password' 
                     type='password' 
                     required 
                     name="confirmPassword" 
                     value={ confirmPassword }
                 />
 
-                <button type="submit">Submit</button>
+                <Button buttonType='google' type="submit">Submit</Button>
             </form>
         </div>
     );
